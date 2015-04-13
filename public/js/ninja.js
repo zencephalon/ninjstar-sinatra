@@ -1,6 +1,7 @@
-function Ninja(x, y) {
-  this.x = x;
-  this.y = y;
+function Ninja(o) {
+  this.x = o.x;
+  this.y = o.y;
+  this.arena = o.arena;
   this.speed = 5;
   this.$ninja = $('<div id="ninja"></div>').appendTo('#arena')
   this.dir = "stopped";

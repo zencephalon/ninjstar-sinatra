@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  var ninja = new Ninja(100, 100);
+  var arena = new Arena(600, 600);
+  var ninja = new Ninja({x: 100, y: 100, arena: arena});
 
   ['right', 'left', 'up', 'down'].forEach(function(dir) {
     Mousetrap.bind(dir, function() {
