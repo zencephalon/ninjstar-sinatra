@@ -1,12 +1,31 @@
 function Ninja(x, y) {
   this.x = x;
   this.y = y;
+  this.speed = 5;
   this.$ninja = $('<div id="ninja"></div>').appendTo('#arena')
+  this.dir = "stopped";
   this.updatePosition();
 }
 
+Ninja.prototype.setDir = function(dir) {
+  this.dir = dir;
+}
+
 Ninja.prototype.move = function() {
-  this.x += 5;
+  switch (this.dir) {
+    case 'up':
+      this.y -= this.speed;
+      break;
+    case 'down':
+      this.y += this.speed;
+      break;
+    case 'left':
+      this.x -= this.speed;
+      break;
+    case 'right':
+      this.x += this.speed;
+      break;
+  }
   this.updatePosition();
 }
 
