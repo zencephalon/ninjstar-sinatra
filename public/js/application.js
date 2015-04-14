@@ -1,7 +1,24 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('#my_form').on('submit', function(event) {
+    event.preventDefault();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    ['/demo', '/demo2', '/demo3'].forEach(function (url) {
+      $.ajax({
+        url: url, // action
+        type: 'GET', // method
+        success: function(response) {
+          console.log(response);
+        },
+        error: function(response) {
+          console.log("failed on url", url, "resp", response);
+        }
+      });
+    })
+
+    console.log("HEY! I'm 'after' the ajax request.")
+  })
+
+  $('table').on('click', function(event) {
+    event.stopPropagation();
+  })
 });
